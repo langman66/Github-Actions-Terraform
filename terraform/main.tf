@@ -24,3 +24,20 @@ resource "azurerm_resource_group" "cdl_tf_hos_eus" {
   name     = "rg-cdl-tf-hos-eus"
   location = "East US"
 }
+
+resource "azurerm_storage_account" "cdl_tf_hos_eus" {
+  name                     = "sacdltfhoseus"
+  resource_group_name      = azurerm_resource_group.cdl_tf_hos_eus.name
+  location                 = azurerm_resource_group.cdl_tf_hos_eus.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+
+  tags = {
+    ringValue                  = "r0"
+    skip-CloudGov-StoragAcc-SS = "true"
+  }
+
+  depends_on = [
+    azurerm_resource_group.cdl_tf_hos_eus
+  ]
+}
