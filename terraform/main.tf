@@ -33,8 +33,8 @@ resource "azurerm_storage_account" "cdl_tf_hos_eus" {
   account_replication_type = "LRS"
 
   tags = {
-    ringValue                     = "r0"
-    skip-CloudGov-StoragAcc-SS    = "true"
+    ringValue                  = "r0"
+    skip-CloudGov-StoragAcc-SS = "true"
   }
 
   depends_on = [
